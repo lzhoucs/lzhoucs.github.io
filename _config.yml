@@ -1,21 +1,67 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+title:       Pixyll
+email:       your_email@example.com
+author:      John Otander
+description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+baseurl:     ""
+url:         "http://pixyll.com"
+date_format: "%b %-d, %Y"
+
+# Google services
+google_analytics:
+google_verification:
+
+# Optional features
+animated:             false
+show_related_posts:   false
+show_post_footers:    false
+show_social_icons:    false
+ajaxify_contact_form: false
+
+# Disqus post comments
+# (leave blank to disable Disqus)
+disqus_shortname:
+
+# Facebook Comments plugin
+# (leave blank to disable Facebook Comments, otherwise set it to true)
+facebook_comments: 
+facebook_appid: 
+facebook_comments_number: 10
+
+# Social icons
+github_username:
+bitbucket_username:
+stackoverflow_id:
+twitter_username:
+google_plus_id:
+linkedin_username:
+angellist_username:
+medium_id:
+bitcoin_url:
+paypal_url:
+flattr_button:
+
+# Post sharing icons
+show_sharing_icons: false
+share_text: 'Share this post!'
+# Change to 'true' to enable individual icons
+share_facebook: false
+share_twitter: false
+share_googleplus: false
+share_linkedin: false
+share_digg: false
+share_tumblr: false
+share_reddit: false
+share_stumbleupon: false
+share_hackernews: false
 
 # Build settings
-markdown: kramdown
+markdown:     kramdown
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+permalink:    pretty
+paginate:     4
+sass:
+  compressed: true
+gems:
+  - jekyll-paginate
