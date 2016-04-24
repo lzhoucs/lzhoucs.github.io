@@ -142,7 +142,7 @@ through which, the solution becomes clearer:
 <input name="debit" type="text" ng-model="debit" demo-one-required="!credit" />
 {% endhighlight %}
 
-###Refactoring
+### Refactoring
 At this point, the directives we have built, namely: `demo-not-required`, `demo-one-required` all look similar. In fact, they only differ in the validation logic. What we can do is to build a general purpose conditional requireness validation directive that support all group and non-group relationship, including all the scenarios we have talked about. And the actual 'rule' that determines the group/non-group relationship is configurable. 
 
 For example, let's say this directive we are going to build is called `demo-required`:
@@ -184,7 +184,7 @@ Then finally in the html, we simply specify the groupId for `demo-required`:
 
 {% endhighlight %}
 
-###The code
+### The code
 The directives we have built can be [found in plunker](http://plnkr.co/edit/kl2VlUls9jBFVbFJmSDn).
 The final `demo-required` is still a work in progress, and can also be [found in plunker](http://plnkr.co/edit/DDqu0NPivBNsfuvIkyjr).
 
