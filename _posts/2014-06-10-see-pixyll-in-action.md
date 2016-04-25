@@ -18,7 +18,7 @@ works if <del>for some reason you need to update your post</del>. For consistenc
 
 Here's an example of some ruby code with line anchors.
 
-{% highlight ruby lineanchors %}
+{% highlight ruby linenos %}
 # The most awesome of classes
 class Awesome < ActiveRecord::Base
   include EvenMoreAwesome
