@@ -20,3 +20,29 @@ There are two parts to Java on OS X. There is a web plugin and a JVM. They are e
 The direct download at Java.com will only install the web plugin.
 The JDK download will install both the JVM and the web plugin.
 
+The following is the output of uninstall java:
+```
+➜  ~ brew cask uninstall java
+==> Uninstalling Cask java
+==> Running uninstall process for java; your password may be necessary
+==> Removing launchctl service com.oracle.java.Helper-Tool
+==> Removing launchctl service com.oracle.java.Java-Updater
+==> Quitting application ID com.oracle.java.Java-Updater
+==> Quitting application ID net.java.openjdk.cmd
+==> Uninstalling packages:
+com.oracle.jdk8u131
+com.oracle.jre
+==> Removing files:
+/Library/Internet Plug-Ins/JavaAppletPlugin.plugin
+/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents
+/Library/PreferencePanes/JavaControlPanel.prefPane
+/Library/Java/Home
+==> Purging files for version 1.8.0_131-b11,d54c1d3a095b4ff2b6607d096fa80163 of Cask java
+```
+This shows a brew cask uninstall uninstalls both jdk and jre.
+
+Then I installed latest java8 using `brew cask install java8`(`brew tap caskroom/versions` first)
+Then all 3 locations show the latest version
+- `/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java -version`
+- `/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/bin/javac -version`
+- `/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/javac -version`
