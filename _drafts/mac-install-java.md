@@ -84,10 +84,14 @@ jenv 0.4.4
 - add jdk to jenv
 ```
 ➜  ~ jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+or with `java_home` command:
+➜  ~ jenv add $(/usr/libexec/java_home -v 1.8)
 oracle64-1.8.0.152 added
 1.8.0.152 added
 1.8 added
 ➜  ~ jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+or with `java_home` command:
+➜  ~ jenv add $(/usr/libexec/java_home -v 1.7)
 oracle64-1.7.0.80 added
 1.7.0.80 added
 1.7 added
