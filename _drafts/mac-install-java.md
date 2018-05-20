@@ -97,3 +97,18 @@ oracle64-1.7.0.80 added
 1.7 added
 ```
 - configure jenv
+```
+➜  ~ jenv global 1.8
+➜  ~ jenv enable-plugin export
+You may restart your session to activate jenv export plugin echo export plugin activated
+
+restart manually...
+
+➜  ~ echo $JAVA_HOME
+/Users/lzhou/.jenv/versions/1.8
+
+➜  ~ $JAVA_HOME/bin/java -version
+java version "1.8.0_152"
+Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
+Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
+```
