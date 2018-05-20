@@ -46,3 +46,50 @@ Then all 3 locations show the latest version
 - `/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java -version`
 - `/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/bin/javac -version`
 - `/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/javac -version`
+
+
+# Install and maintain multiple java versions including java 7
+- manually download java 7. Reason: https://github.com/caskroom/homebrew-cask/issues/37772
+- manually install the dmg file
+Find: it seems this install is pretty non-destructive.
+one more entry is added
+```
+➜  ~ /usr/libexec/java_home -V
+Matching Java Virtual Machines (2):
+    1.8.0_152, x86_64:	"Java SE 8"	/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+    1.7.0_80, x86_64:	"Java SE 7"	/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+```
+other than that, nothing is changed
+```
+~ java -version
+java version "1.8.0_152"
+
+➜  ~ echo $JAVA_HOME
+/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+```
+
+- install jenv
+```
+➜  ~ brew update
+➜  ~ brew install jenv
+/usr/local/Cellar/jenv/0.4.4: 78 files, 66KB, built in 1 second
+➜  ~ which jenv
+/usr/local/bin/jenv
+➜  ~ jenv --version
+jenv 0.4.4
+
+➜  ~ echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
+➜  ~ echo 'eval "$(jenv init -)"' >> ~/.zshrc
+```
+- add jdk to jenv
+```
+➜  ~ jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+oracle64-1.8.0.152 added
+1.8.0.152 added
+1.8 added
+➜  ~ jenv add /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+oracle64-1.7.0.80 added
+1.7.0.80 added
+1.7 added
+```
+- configure jenv
