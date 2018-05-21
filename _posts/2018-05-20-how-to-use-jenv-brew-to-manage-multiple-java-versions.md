@@ -164,3 +164,98 @@ java version "1.8.0_152"
 Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
 Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
 {% endhighlight %}
+
+## Install java 10
+
+As the time of writing, `brew cask install java` installs java 10.
+
+Install:
+{% highlight bash %}
+
+➜  lzhoucs.github.io git:(master) brew cask install java
+Updating Homebrew...
+==> Auto-updated Homebrew!
+==> Caveats
+This Cask makes minor modifications to the JRE to prevent issues with
+packaged applications, as discussed here:
+
+  https://bugs.eclipse.org/bugs/show_bug.cgi?id=411361
+
+If your Java application still asks for JRE installation, you might need
+to reboot or logout/login.
+
+Installing this Cask means you have AGREED to the Oracle Binary Code
+License Agreement for Java SE at
+
+  https://www.oracle.com/technetwork/java/javase/terms/license/index.html
+
+==> Satisfying dependencies
+==> Downloading http://download.oracle.com/otn-pub/java/jdk/10.0.1+10/fb4372174a714e6b8c52526dc134031e/jdk-10.0.1_osx-x64_bin.dmg
+######################################################################## 100.0%j
+==> Verifying checksum for Cask java
+==> Installing Cask java
+==> Running installer for java; your password may be necessary.
+==> Package installers may write to any location; options such as --appdir are ignored.
+==> installer: Package name is JDK 10.0.1
+==> installer: Upgrading at base path /
+==> installer: The upgrade was successful.
+🍺  java was successfully installed!
+{% endhighlight %}
+
+Verify nothing has changed except for a new entry is added into `java_home`
+
+{% highlight bash %}
+
+➜  lzhoucs.github.io git:(master) ✗ java -version
+java version "1.8.0_152"
+Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
+Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
+
+➜  lzhoucs.github.io git:(master) ✗ /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java -version
+java version "1.8.0_152"
+Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
+Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)
+
+➜  lzhoucs.github.io git:(master) ✗ echo $JAVA_HOME
+/Users/lzhou/.jenv/versions/1.8
+
+➜  lzhoucs.github.io git:(master) ✗ /usr/libexec/java_home -V
+Matching Java Virtual Machines (3):
+    10.0.1, x86_64:	"Java SE 10.0.1"	/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+    1.8.0_152, x86_64:	"Java SE 8"	/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+    1.7.0_80, x86_64:	"Java SE 7"	/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+
+{% endhighlight %}
+
+Add java 10 into jenv
+
+{% highlight bash %}
+
+➜  lzhoucs.github.io git:(master) ✗ jenv add $(/usr/libexec/java_home -v 10)
+oracle64-10.0.1 added
+10.0.1 added
+10.0 added
+
+{% endhighlight %}
+
+List current versions in jenv
+
+{% highlight bash %}
+➜  lzhoucs.github.io git:(master) ✗ jenv versions
+  system
+  1.7
+  1.7.0.80
+* 1.8 (set by /Users/lzhou/.jenv/version)
+  1.8.0.152
+  10.0
+  10.0.1
+  oracle64-1.7.0.80
+  oracle64-1.8.0.152
+  oracle64-10.0.1
+{% endhighlight %}
+
+So exactly what does `jenv global <java-version>` do behind the scene? It does the following:
+
+- It sets the new <java-version> in `~/.jenv/version` file which current `java` in the `Path` is reading from
+- It updates $JAVA_HOME(requires restart terminal to take effect)
+- It updates `/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/` to point to new java version(my observation)
