@@ -15,7 +15,7 @@ Manage multiple java versions on macOS can be tricky. There's different ways to 
 - download java distribution from Oracle
 - download java distribution from java.com
 
-And once the java version becomes outdated, there's different ways to upgrade too, which we will disucss below.
+And once the java version becomes outdated, there's different ways to upgrade too, which we will discuss below.
 
 ## Upgrade from `brew cask`
 
@@ -36,7 +36,7 @@ Why? A `jdk` for macOS comes in two component:
   
   `/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home`
 
-A `homebrew cask install` will download the latest package at `/usr/local/Caskroom/java/`, then install to both directorys, whereas if you install the package you downloaded from java.com, or upgrade the package from 'Java Preference Panel', it only installs/upgrades the Web Applet plugin.
+A `homebrew cask install` will download the latest package at `/usr/local/Caskroom/java/`, then install to both directories, whereas if you install the package you downloaded from java.com, or upgrade the package from 'Java Preference Panel', it only installs/upgrades the Web Applet plugin.
 
 There's also `/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/` folder, which maintains a copy of bin commands in current java installation, and it will be updated when a new version of jdk is installed.
 
